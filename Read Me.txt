@@ -1,1 +1,14 @@
 This is the journey into Python and Data science
+
+--Creating virtual env
+python3 -m venv 'nameOfEnv'
+
+--Activating env
+source env/bin/activate
+or
+venv\Scripts\activate
+or
+'nameOfEnv'\Scripts\activate
+
+--to deactivate
+deactivate

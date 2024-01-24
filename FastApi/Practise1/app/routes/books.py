@@ -27,21 +27,21 @@ async def postBooks(book: Books):
 @router.put("/books/{bookId}", tags=["Books"])
 async def putBooks(bookId: int, book: Books):
     for i, x in enumerate(books_read):
-        if x.id == bookId:
-            books_read[i] = book 
+        if x["id"] == bookId:
+            books_read[i] = book
             return books_read[i]
     raise HTTPException(
-        status_code = 404,
-        detail = f"ID {bookId}, does not exist"
+        status_code=404,
+        detail=f"ID {bookId}, does not exist"
     )
 
 @router.delete("/books/{bookId}", tags=["Books"])
 async def delBooks(bookId: int):
     for i, x in enumerate(books_read):
-        if x.id == bookId:
+        if x["id"] == bookId:
             del books_read[i]
-            return f"ID {bookId} is delete"
+            return f"ID {bookId} is deleted"
     raise HTTPException(
-        status_code = 404,
-        detail = f"ID {bookId}, does not exist"
+        status_code=404,
+        detail=f"ID {bookId}, does not exist"
     )

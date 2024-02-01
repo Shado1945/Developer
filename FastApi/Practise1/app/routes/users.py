@@ -12,7 +12,7 @@ class Users(BaseModel):
 #fake database
 users_read = [
     {"id":1, "fullname":"Rohan Viljoen", "name":"Rohan", "surname":"Viljoen"},
-    {"id":2, "fullname":"Roxanne de le rosa", "author":"Roxanne", "surname":"Viljoen"}
+    {"id":2, "fullname":"Roxanne de le rosa", "name":"Roxanne", "surname":"Viljoen"}
 ]
 
 @router.get("/user", tags=["Users"])
@@ -27,7 +27,7 @@ async def postUser(user: Users):
 @router.put("/user/{userId}", tags=["Users"])
 async def putUser(userId: int, user: Users):
     for i,x in enumerate(users_read):
-        if x.id == userId:
+        if x["id"] == userId:
             users_read[i] = user
             return users_read[i]
     raise HTTPException(
@@ -38,8 +38,8 @@ async def putUser(userId: int, user: Users):
 @router.delete("/user/{userId}", tags=["Users"])
 async def deleteUser(userId: int):
     for i,x in enumerate(users_read):
-        if x == userId:
-            del userId[i]
+        if x["id"] == userId:
+            del users_read[i]
             return f"User id of {userId} is deleted"
     raise HTTPException(
         status_code = 404,

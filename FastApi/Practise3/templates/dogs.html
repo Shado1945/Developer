@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <title>Dog Page</title>
+</head>
+<body>
+    <div align="center">
+        <h1>This is the dog page</h1>
+    </div>
+    <div align="center">
+        <ul>
+            <li><a href="{{ url_for('indexMethod') }}"><h1>Home Page</h1></a></li>
+        </ul>
+    </div>
+    <div align="center">
+        <table class="table">
+            <tr>
+                <th>Dog Name</th>
+                <th>Dog Type</th>
+                <th>Dog Color</th>
+            </tr>
+            {% for dog in dogs %}
+            <tr>
+                <td>{{dog.name}}</td>
+                <td>{{dog.type}}</td>
+                <td>{{dog.color}}</td>
+            </tr>
+            {% endfor %}
+       </table>
+    </div>
+</body>
+</html>
